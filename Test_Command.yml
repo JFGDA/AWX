@@ -1,13 +1,23 @@
 ---
-- hosts: all
-  gather_facts: true
+- name: all
+  connection: network_cli
+  gather_facts: false
+  hosts: all
   remote_user: jfgda
   tasks:
-     - name: Shsow command
-       ios_command:
-          commands:
-            - command:: show ntp associations 
-       register: output
-     - name: print output
-       debug:
-         var: output
+
+    - name: Get config for IOS devices
+      ios_facts:
+        gather_subset: all
+
+#    - name: Display the config
+#      debug:
+#        msg: "The hostname is {{ ansible_net_hostname }}, the IOS is {{ ansible_net_version }}, and the Model is {{ ansible_net_model }}."
+# get all ios_facts
+#         msg: "{{ hostvars[inventory_hostname] }}"
+
+    - name: Display device specific Information
+      debug:
+        msg: "The hostname is {{ ansible_net_hostname }}, the IOS is {{ ansible_net_version }}, and the Model is {{ ansible_net_model }}."
+# get all ios_facts
+#         msg: "{{ hostvars[inventory_hostname] }}"

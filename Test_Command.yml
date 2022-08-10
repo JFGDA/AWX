@@ -3,11 +3,11 @@
   gather_facts: true
   remote_user: jfgda
   tasks:
-  - name: Shsow command
-    ios_command:
-        commands:
-          - command:: show ntp associations 
-    register: output
-  - name: print output
-    debug:
-        var: output
+     - name: Shsow command
+       ios_command:
+          commands:
+            - command:: show ntp associations 
+       register: output
+     - name: print output
+       debug:
+         var: output

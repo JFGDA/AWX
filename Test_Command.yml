@@ -2,17 +2,10 @@
 - hosts: all
   gather_facts: true
   remote_user: jfgda
-  vars:
-    WAN_Command_List:
-      - show ntp associations 
-      - show ntp associations detail
-      - show ntp status
-      - show clock
-
-
   tasks:
-
-     register: output
-   - name: print output
-     debug:
+  - name: Shsow command
+      command: show ntp associations 
+      register: output
+  - name: print output
+    debug:
         var: output

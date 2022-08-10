@@ -1,0 +1,32 @@
+---
+- name: Update web servers
+  hosts: all
+  remote_user: jfgda
+  
+  
+- hosts: all
+#  gather_facts: no
+  vars:
+    WAN_Command_List:
+      - show version | i flash
+      - show run | i template version
+      - show crypto pki cert      
+      - show environment all
+      - show ip ospf int brief
+      - show ip ospf neig
+      - show cdp neighbors detail
+      - show version
+      - show license detail
+      - show clock
+      - show dmvpn
+      - show bgp summary
+      - show logging
+      - show int status | inc connected
+      - show arp
+#      - Wpp-test
+      - ping main1 repeat 1
+      - ping main2 repeat 1
+      - ping main3 repeat 1
+      - ping main4 repeat 1
+      - ping PPC1-CORE-SW repeat 1
+      - ping PPC1-EXT-SW repeat

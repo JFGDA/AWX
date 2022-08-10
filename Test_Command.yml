@@ -1,7 +1,7 @@
 ---
 
 - hosts: all
-#  gather_facts: no
+  gather_facts: false
   remote_user: jfgda
   #connection: network_cli
   vars:

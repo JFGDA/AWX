@@ -31,5 +31,5 @@
   register: output
 
 - name: print output
-     debug:
-        var: output
+  debug:
+     var: output

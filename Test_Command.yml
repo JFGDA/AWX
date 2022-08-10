@@ -4,8 +4,10 @@
   remote_user: jfgda
   tasks:
   - name: Shsow command
-      command: show ntp associations 
-      register: output
+    ios_command:
+        commands:
+          - command:: show ntp associations 
+    register: output
   - name: print output
     debug:
         var: output

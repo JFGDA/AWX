@@ -1,14 +1,17 @@
 ---
 
-- name: Cisco show version example
-  hosts: all
+- name: Cisco ip interface brief + ip route
+  hosts: routers
   gather_facts: false
+  connection: network_cli
   remote_user: jfgda
 
   tasks:
-    - name: run show version on the routers
+    - name: run show ip interface brief + ip route
       ios_command:
-        commands: show version | incl Version
+        commands: 
+          - show ip interface brief
+          - show ip route
       register: output
 
     - name: print output

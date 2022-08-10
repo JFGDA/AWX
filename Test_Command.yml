@@ -2,7 +2,7 @@
 - name: Update web servers
   hosts: all
   remote_user: jfgda
-  connection: network_cli
+
   
 - hosts: all
 #  gather_facts: no

@@ -1,18 +1,16 @@
 ---
-   - name: capture show output
-     hosts: all
-     gather_facts: no
-     connection: network_cli
-     remote_user: jfgda
 
-     tasks:
-       - name: show run
-           ios_command:
-             commands:
-             - show version
-           register: config
+- name: Cisco show version example
+  hosts: all
+  gather_facts: false
+  remote_user: jfgda
 
-       - name: save output to local directory
-          copy:
-            content: "{{ config.stdout | replace('\\n', '\n') }}"
-            dest: "show-output/{{ inventory_hostname }}.ios"
+  tasks:
+    - name: run show version on the routers
+      ios_command:
+        commands: show version | incl Version
+      register: output
+
+    - name: print output
+      debug:
+        var: output.stdout_lines

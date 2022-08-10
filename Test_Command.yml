@@ -2,7 +2,7 @@
 - name: Update web servers
   hosts: all
   remote_user: jfgda
-  ansible_become_pass: 544Matilde2012!
+  
   
 - hosts: all
 #  gather_facts: no

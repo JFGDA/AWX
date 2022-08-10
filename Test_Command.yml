@@ -3,7 +3,9 @@
 - name: Cisco ip interface brief + ip route
   hosts: routers
   gather_facts: false
-  connection: network_cli
+  vars:
+    ansible_connection: network_cli
+    collections: cisco.ios
   remote_user: jfgda
 
   tasks:

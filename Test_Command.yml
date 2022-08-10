@@ -1,7 +1,9 @@
 ---
-
+- name: Update web servers
+  hosts: all
+  remote_user: jfgda
+  
 - hosts: all
-- hosts: VOB_WAN
 #  gather_facts: no
   vars:
     WAN_Command_List:

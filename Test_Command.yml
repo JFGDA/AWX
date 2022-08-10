@@ -28,8 +28,8 @@
       - ping main4 repeat 1
       - ping PPC1-CORE-SW repeat 1
       - ping PPC1-EXT-SW repeat
-  register: output
+    register: output
 
-- name: print output
-  debug:
+  - name: print output
+    debug:
      var: output

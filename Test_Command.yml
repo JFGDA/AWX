@@ -3,7 +3,7 @@
   hosts: all
   remote_user: jfgda
   #connection: network_cli
-  ansible_network_os = ios
+ #ansible_network_os = ios
   
 - hosts: all
 #  gather_facts: no

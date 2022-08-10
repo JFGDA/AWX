@@ -11,10 +11,6 @@
 
 
   tasks:
-   - name: Config NTP Servers(DK Public_IPs) on Site(Test ID 4)
-     ios_config:
-        lines:
-           - ntp authentication-key 1 md5 05010F0B384944514A02131E00095101 7
 
      register: output
    - name: print output

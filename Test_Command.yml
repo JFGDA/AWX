@@ -1,14 +1,22 @@
 ---
-
 - hosts: all
-  gather_facts: false
+  gather_facts: true
   remote_user: jfgda
-  #connection: network_cli
   vars:
     WAN_Command_List:
-      - show version | i flash
-    register: output
+      - show ntp associations 
+      - show ntp associations detail
+      - show ntp status
+      - show clock
 
-  - name: print output
-    debug:
-      var: output
+
+  tasks:
+   - name: Config NTP Servers(DK Public_IPs) on Site(Test ID 4)
+     ios_config:
+        lines:
+           - ntp authentication-key 1 md5 05010F0B384944514A02131E00095101 7
+
+     register: output
+   - name: print output
+     debug:
+        var: output

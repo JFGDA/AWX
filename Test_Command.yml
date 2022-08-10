@@ -6,7 +6,7 @@
      remote_user: jfgda
 
      tasks:
-        - name: show run
+       - name: show run
          ios_command:
            commands:
            - show version

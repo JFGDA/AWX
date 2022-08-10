@@ -2,11 +2,12 @@
 - name: Update web servers
   hosts: all
   remote_user: jfgda
-  connection: network_cli
+  #connection: network_cli
+  ansible_network_os = ios
   
 - hosts: all
 #  gather_facts: no
-  connection: network_cli
+  #connection: network_cli
   vars:
     WAN_Command_List:
       - show version | i flash

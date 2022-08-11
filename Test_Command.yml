@@ -1,4 +1,6 @@
+---
 - hosts: all
+  collection: name: cisco.ios
   ignore_errors: yes
   tasks:
    - name: Backup

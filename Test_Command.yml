@@ -1,14 +1,14 @@
 ---
-- hosts: all
-  ignore_errors: yes
-  #collections:
-  # - cisco.ios
-  tasks:
-  - name: Backup
-     ios_command:
-        commands: show version
-    register: output
-#       provider: "{{cli}}"
-  - debug: 
-           var: output.stdout_lines
+  - name: Initial Playbook
+    hosts: all
+    gather_facts: no
+    connection: network_cli
+    tasks:
+      - name: run sh ip int br
+        ios_command:
+          commands: show ip int br
+        register: sh_ip_int_br_result
+      - name: Debug registered var
+        debug: var=sh_ip_int_br_result.stdout_lines
+          
 

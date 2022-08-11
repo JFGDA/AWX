@@ -4,11 +4,11 @@
   collections:
    - cisco.ios
   tasks:
-   - name: Backup
-     ios_command:
+  - name: Backup
+    ios_command:
         commands: show version
-     register: output
+    register: output
 #       provider: "{{cli}}"
-   - debug: 
+  - debug: 
            var: output.stdout_lines
 

@@ -1,0 +1,43 @@
+- hosts: all
+  ignore_errors: yes
+  tasks:
+    # ICMP Verification
+   #- name: Pick CLI
+    # shell: 9
+     #wait_for: "sh-4.2$"
+    # register: log_usage_menu
+   - name: Enter Menu
+     expect:
+      responses:
+        'Enter option:'
+      echo: 9
+   - name: Connection Check with WAN ROUTER
+     shell: ping -c 1 10.56.0.0
+     register: log_usage_icmp
+#   - debug: msg="{{ usage_icmp.stdout }}"
+   - name: Connection Check with MAIN1
+     shell: ping -c 1 10.56.0.255
+     register: log_usage_icmp1
+#   - debug: msg="{{ usage_icmp.stdout }}"
+   - name: Connection Check with MAIN2
+     shell: ping -c 1 10.56.0.254
+     register: log_usage_icmp2
+#   - debug: msg="{{ usage_icmp.stdout }}"
+   - name: Connection Check with MAIN3
+     shell: ping -c 1 10.56.1.251
+     register: log_usage_icmp3
+#   - debug: msg="{{ usage_icmp.stdout }}"
+   - name: Connection Check with MAIN4
+     shell: ping -c 1 10.56.1.250
+     register: log_usage_icmp4
+#   - debug: msg="{{ usage_icmp.stdout }}"
+#    Netstat Verification
+   - name: Get Netstat
+     shell: netstat
+     register: log_usage_netstat
+#    Services  Verification
+   - name: Get Active Services
+     shell: sudo lsof -i -P -n | grep LISTEN
+     register: log_usage_services
+     
+     

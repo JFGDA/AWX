@@ -4,3 +4,16 @@
   hosts: all
   gather_facts: false
   remote_user: jfgda
+  tasks:
+
+#    - name: Get config for IOS devices
+#      ios_facts:
+#        gather_subset: all
+
+    - name: GET LLDP 
+      ios_command:
+         commands: show lldp neighbors
+      register: output
+#       provider: "{{cli}}"
+    - debug: 
+           var: output.stdout_lines

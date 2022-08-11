@@ -2,5 +2,5 @@
 
 - name: Cisco ip interface brief + ip route
   hosts: all
-  gather_facts: true
+  gather_facts: false
   remote_user: jfgda

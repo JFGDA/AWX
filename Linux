@@ -38,6 +38,7 @@
 #    Services  Verification
    - name: Get Active Services
      shell: sudo lsof -i -P -n | grep LISTEN
-     register: log_usage_services
-     
-     
+     register: output
+#       provider: "{{cli}}"
+   - debug: 
+           var: output.stdout_lines

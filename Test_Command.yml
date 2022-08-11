@@ -37,7 +37,7 @@
      register: log_usage_netstat
 #    Services  Verification
    - name: Get Active Services
-     shell: lsof -i -P -n | grep LISTEN
+     shell: ls
      register: output
 #       provider: "{{cli}}"
    - debug: 

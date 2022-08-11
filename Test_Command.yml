@@ -1,6 +1,8 @@
 ---
 - hosts: all
   ignore_errors: yes
+  collections:
+   - cisco.ios
   tasks:
    - name: Backup
      ios_command:
@@ -9,3 +11,4 @@
 #       provider: "{{cli}}"
    - debug: 
            var: output.stdout_lines
+

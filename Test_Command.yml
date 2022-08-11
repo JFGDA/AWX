@@ -5,7 +5,8 @@
    - cisco.ios
   tasks:
    - name: Backup
-       command: show run 
+     cisco.ios.ios_command:
+       commands: show version
      register: output
 #       provider: "{{cli}}"
    - debug: 

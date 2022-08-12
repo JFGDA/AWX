@@ -17,7 +17,7 @@
       - name: Debug registered var
         debug: var=sh_version.stdout_lines
         
-  - name: Virtual Machines
+  - name: Virtual Machines_LOGRelay
     hosts: LogRelay
     gather_facts: false
     tasks:
@@ -44,4 +44,90 @@
       - name: Debug registered var
         debug: var=log_usage_status.stdout_lines
      
+  - name: Virtual Machines_Backup
+    hosts: Backup
+    gather_facts: false
+    tasks:
+ 
+      - name: Get Netstat
+        command: netstat
+        register: log_usage_netstat_bk
+#    Services  Verification
+      - name: Get UNAME
+        command:  uname -a
+        register: log_usage_services_bk  
+      - name: Get Active Services
+        command:  df -Th
+        register: log_usage_status_bk 
+      - name: Debug registered var
+        debug: var=log_usage_netstat_bk.stdout_lines
+      - name: Debug registered var
+        debug: var=log_usage_services_bk.stdout_lines
+      - name: Debug registered var
+        debug: var=log_usage_status_bk.stdout_lines
+        
+  - name: Virtual Machines_Backup
+    hosts: UPSManager
+    gather_facts: false
+    tasks:
+ 
+      - name: Get Netstat
+        command: netstat
+        register: log_usage_netstat_ups
+#    Services  Verification
+      - name: Get UNAME
+        command:  uname -a
+        register: log_usage_services_ups  
+      - name: Get Active Services
+        command:  df -Th
+        register: log_usage_status_ups
+      - name: Debug registered var
+        debug: var=log_usage_netstat_ups.stdout_lines
+      - name: Debug registered var
+        debug: var=log_usage_services_ups.stdout_lines
+      - name: Debug registered var
+        debug: var=log_usage_status_ups.stdout_lines
+        
+  - name: Virtual Machines_NRP
+    hosts: NRP
+    gather_facts: false
+    tasks:
+ 
+      - name: Get Netstat
+        command: netstat
+        register: log_usage_netstat_nrp
+#    Services  Verification
+      - name: Get UNAME
+        command:  uname -a
+        register: log_usage_services_nrp  
+      - name: Get Active Services
+        command:  df -Th
+        register: log_usage_status_nrp
+      - name: Debug registered var
+        debug: var=log_usage_netstat_nrp.stdout_lines
+      - name: Debug registered var
+        debug: var=log_usage_services_nrp.stdout_lines
+      - name: Debug registered var
+        debug: var=log_usage_status_nrp.stdout_lines
 
+  - name: Virtual Machines_ESXI
+    hosts: ESXI
+    gather_facts: false
+    tasks:
+ 
+      - name: Get Netstat
+        command: netstat
+        register: log_usage_netstat_esxi
+#    Services  Verification
+      - name: Get UNAME
+        command:  uname -a
+        register: log_usage_services_esxi  
+      - name: Get Active Services
+        command:  df -Th
+        register: log_usage_status_esxi
+      - name: Debug registered var
+        debug: var=log_usage_netstat_esxi.stdout_lines
+      - name: Debug registered var
+        debug: var=log_usage_services_esxi.stdout_lines
+      - name: Debug registered var
+        debug: var=log_usage_status_esxi.stdout_lines

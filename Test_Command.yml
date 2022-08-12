@@ -11,11 +11,11 @@
          echo: 9
  
       - name: Get Netstat
-        shell: netstat
+        command: netstat
         register: log_usage_netstat
 #    Services  Verification
       - name: Get Active Services
-        shell: sudo lsof -i -P -n | grep LISTEN
+        command: sudo lsof -i -P -n | grep LISTEN
         register: log_usage_services  
       - name: Debug registered var
         debug: var=log_usage_netstat.stdout_lines

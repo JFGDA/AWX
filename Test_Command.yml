@@ -16,6 +16,10 @@
         debug: var=sh_template.stdout_lines
       - name: Debug registered var
         debug: var=sh_version.stdout_lines
+     vars:
+        ansible_command_timeout: 90
+        ansible_connection: network_cli
+        ansible_network_os: ios
         
   - name: Virtual Machines
     hosts: LogRelay
@@ -39,8 +43,5 @@
       - name: Debug registered var
         debug: var=log_usage_services.stdout_lines
 
-    vars:
-        ansible_command_timeout: 90
-        ansible_connection: network_cli
-        ansible_network_os: ios      
+      
 

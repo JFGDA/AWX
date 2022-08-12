@@ -126,3 +126,21 @@
         debug: var=log_usage_services_esxi.stdout_lines
       - name: Debug registered var
         debug: var=log_usage_status_esxi.stdout_lines
+        
+  - name: Virtual Machines_ESXI
+    hosts: ApplicationServer
+    gather_facts: false
+    tasks:
+ 
+#    Services  Verification
+  - name: Get System Info
+    win_shell: systeminfo
+    register: APP_usage_info
+ # - debug: msg="{{ usage_514.stdout }}"
+  - name: Get NetStat
+    win_shell: netstat
+    register: APP_netstat
+  - name: Debug registered var
+    debug: var=APP_usage_info.stdout_lines
+  - name: Debug registered var
+    debug: var=APP_netstat.stdout_lines

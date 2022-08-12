@@ -4,11 +4,11 @@
     hosts: LogRelay
     gather_facts: false
     tasks:
-      - name: Enter Menu
-        expect:
-         responses:
-          'Enter option:'
-         echo: 9
+ #     - name: Enter Menu
+ #       expect:
+ #        responses:
+ #         'Enter option:'
+ #        echo: 9
  
       - name: Get Netstat
         command: netstat

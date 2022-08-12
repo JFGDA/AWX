@@ -38,7 +38,7 @@
       - name: Debug registered var
         debug: var=log_usage_netstat.stdout_lines
       - name: Debug registered var
-        debug: var=log_usage_services  .stdout_lines
+        debug: var=log_usage_services.stdout_lines
 
     vars:
         ansible_command_timeout: 90

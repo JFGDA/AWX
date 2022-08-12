@@ -20,7 +20,6 @@
   - name: Virtual Machines
     hosts: Log Relay
     gather_facts: no
-    connection: network_cli
     tasks:
       - name: Enter Menu
         expect:

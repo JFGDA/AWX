@@ -115,9 +115,6 @@
     gather_facts: false
     tasks:
  
-      - name: Get Netstat
-        command: netstat
-        register: log_usage_netstat_esxi
 #    Services  Verification
       - name: Get UNAME
         command:  uname -a
@@ -125,8 +122,6 @@
       - name: Get Active Services
         command:  df -Th
         register: log_usage_status_esxi
-      - name: Debug registered var
-        debug: var=log_usage_netstat_esxi.stdout_lines
       - name: Debug registered var
         debug: var=log_usage_services_esxi.stdout_lines
       - name: Debug registered var

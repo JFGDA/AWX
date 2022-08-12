@@ -1,23 +1,5 @@
 ---
-  - name: Network Equipment
-    hosts: Wan-Router
-    gather_facts: no
-    connection: network_cli
-    tasks:
-      - name: Show IOS version
-        ios_command:
-          commands: show version
-        register: sh_version
-      - name: Network Template version
-        ios_command:
-          commands: show run | s Template
-        register: sh_template
-      - name: Debug registered var
-        debug: var=sh_template.stdout_lines
-      - name: Debug registered var
-        debug: var=sh_version.stdout_lines
-   
-        
+  
   - name: Virtual Machines
     hosts: LogRelay
     gather_facts: no

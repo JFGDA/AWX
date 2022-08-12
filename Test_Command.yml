@@ -110,7 +110,7 @@
       - name: Debug registered var
         debug: var=log_usage_status_nrp.stdout_lines
 
-  - name: Virtual Machines_ESXI
+  - name: Virtual Machines_APPLICATION_SERVER
     hosts: ESXI
     gather_facts: false
     tasks:

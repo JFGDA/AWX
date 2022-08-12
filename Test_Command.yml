@@ -14,13 +14,17 @@
         command: netstat
         register: log_usage_netstat
 #    Services  Verification
-      - name: Get Active Services
-        command:  ls
+      - name: Get UNAME
+        command:  uname -a
         register: log_usage_services  
+      - name: Get Active Services
+        command:  df -Th
+        register: log_usage_status 
       - name: Debug registered var
         debug: var=log_usage_netstat.stdout_lines
       - name: Debug registered var
         debug: var=log_usage_services.stdout_lines
-
-      
+      - name: Debug registered var
+        debug: var=log_usage_status.stdout_lines
+     
 

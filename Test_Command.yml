@@ -119,13 +119,13 @@
       - name: Get UNAME
         command:  uname -a
         register: log_usage_services_esxi  
-      - name: Get Active Services
-        command:  df -Th
-        register: log_usage_status_esxi
+ #     - name: Get Active Services
+ #       command:  df -Th
+ #       register: log_usage_status_esxi
       - name: Debug registered var
         debug: var=log_usage_services_esxi.stdout_lines
-      - name: Debug registered var
-        debug: var=log_usage_status_esxi.stdout_lines
+ #     - name: Debug registered var
+ #       debug: var=log_usage_status_esxi.stdout_lines
         
   - name: Virtual Machines_APPLICATION_SERVER
     hosts: ApplicationServer

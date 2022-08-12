@@ -18,7 +18,7 @@
         debug: var=sh_version.stdout_lines
         
   - name: Virtual Machines
-    hosts: Log Relay
+    hosts: LogRelay
     gather_facts: no
     tasks:
       - name: Enter Menu

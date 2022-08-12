@@ -1,5 +1,5 @@
 ---
-  - name: Initial Playbook
+  - name: Network Equipment
     hosts: Wan-Router
     gather_facts: no
     connection: network_cli
@@ -8,15 +8,38 @@
         ios_command:
           commands: show version
         register: sh_version
-      - name: Debug registered var
-        debug: var=sh_version.stdout_lines
       - name: Network Template version
         ios_command:
           commands: show run | s Template
         register: sh_template
       - name: Debug registered var
         debug: var=sh_template.stdout_lines
+      - name: Debug registered var
+        debug: var=sh_version.stdout_lines
         
+  - name: Virtual Machines
+    hosts: Log Relay
+    gather_facts: no
+    connection: network_cli
+    tasks:
+      - name: Enter Menu
+        expect:
+         responses:
+          'Enter option:'
+         echo: 9
+ 
+      - name: Get Netstat
+        shell: netstat
+        register: log_usage_netstat
+#    Services  Verification
+      - name: Get Active Services
+        shell: sudo lsof -i -P -n | grep LISTEN
+        register: log_usage_services  
+      - name: Debug registered var
+        debug: var=log_usage_netstat.stdout_lines
+      - name: Debug registered var
+        debug: var=log_usage_services  .stdout_lines
+
     vars:
         ansible_command_timeout: 90
         ansible_connection: network_cli

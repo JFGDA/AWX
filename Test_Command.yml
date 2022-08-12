@@ -4,12 +4,19 @@
     gather_facts: no
     connection: network_cli
     tasks:
-      - name: run sh ip int br
+      - name: Show IOS version
         ios_command:
-          commands: show ip int br
-        register: sh_ip_int_br_result
+          commands: show version
+        register: sh_version
       - name: Debug registered var
-        debug: var=sh_ip_int_br_result.stdout_lines
+        debug: var=sh_version.stdout_lines
+      - name: Network Template version
+        ios_command:
+          commands: show run | s Template
+        register: sh_template
+      - name: Debug registered var
+        debug: var=sh_template.stdout_lines
+        
     vars:
         ansible_command_timeout: 90
         ansible_connection: network_cli

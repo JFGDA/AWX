@@ -66,27 +66,27 @@
       - name: Debug registered var
         debug: var=log_usage_status_bk.stdout_lines
         
-  - name: Virtual Machines_Backup
-    hosts: UPSManager
-    gather_facts: false
-    tasks:
+ # - name: Virtual Machines_Backup
+ #   hosts: UPSManager
+ #   gather_facts: false
+ #   tasks:
  
-      - name: Get Netstat
-        command: netstat
-        register: log_usage_netstat_ups
+  #    - name: Get Netstat
+  #      command: netstat
+  #      register: log_usage_netstat_ups
 #    Services  Verification
-      - name: Get UNAME
-        command:  uname -a
-        register: log_usage_services_ups  
-      - name: Get Active Services
-        command:  df -Th
-        register: log_usage_status_ups
-      - name: Debug registered var
-        debug: var=log_usage_netstat_ups.stdout_lines
-      - name: Debug registered var
-        debug: var=log_usage_services_ups.stdout_lines
-      - name: Debug registered var
-        debug: var=log_usage_status_ups.stdout_lines
+  #    - name: Get UNAME
+  #      command:  uname -a
+  #      register: log_usage_services_ups  
+  #    - name: Get Active Services
+  #      command:  df -Th
+  #      register: log_usage_status_ups
+  #    - name: Debug registered var
+  #      debug: var=log_usage_netstat_ups.stdout_lines
+  #    - name: Debug registered var
+  #      debug: var=log_usage_services_ups.stdout_lines
+  #    - name: Debug registered var
+  #      debug: var=log_usage_status_ups.stdout_lines
         
   - name: Virtual Machines_NRP
     hosts: NRP

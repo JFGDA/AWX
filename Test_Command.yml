@@ -45,7 +45,7 @@
         debug: var=log_usage_status.stdout_lines
      
   - name: Virtual Machines_Backup
-    hosts: Backup
+    hosts: NRP
     gather_facts: false
     tasks:
  
